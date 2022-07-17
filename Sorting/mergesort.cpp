@@ -1,8 +1,9 @@
 #include<iostream>
-#include<algorithm>
 using namespace std;
-
-int count_merge(int arr[], int low,int mid,int high)
+//Merge Sort
+//1. Divide Conquer And Merge 2.Stable 3.Time theta(nlogn) 4.Space O(n) 5.Best for Link List as space O(1)
+//6. USed in external sorting  7.For arrays,Quicksort outperforms it.
+void merge(int arr[],int low,int mid, int high)
 {
     int n1=mid-low+1;
     int n2=high-mid;
@@ -13,7 +14,6 @@ int count_merge(int arr[], int low,int mid,int high)
     int k=0;
 	int l=0;
 	int m=low;
-    int res=0;
     while(k<n1 && l<n2)
     {
         if(left[k]<=right[l])
@@ -27,7 +27,6 @@ int count_merge(int arr[], int low,int mid,int high)
             arr[m]=right[l];
             l++;
             m++;
-            res= res+(n1-k);
         }
     }
     while (k<n1)
@@ -42,27 +41,15 @@ int count_merge(int arr[], int low,int mid,int high)
         m++;
         l++;
     }
-    return res;
-    
 }
 
-int count_Inversion(int arr[],int l,int r)
+void mergeSort(int arr[],int l,int r)
 {
-    int res=0;
     if(r>l)
     {
         int mid=l+(r-l)/2;
-        res+=count_Inversion(arr,l,mid);
-        res+=count_Inversion(arr,mid+1,r);
-        res+=count_merge(arr,l,mid,r);
+        mergeSort(arr,l,mid);
+        mergeSort(arr,mid+1,r);
+        merge(arr,l,mid,r);
     }
-    return res;
-}
-
-int main()
-{
-    int arr[]={2,5,8,11,3,6,9,15};
-    cout<<count_Inversion(arr,0,7)<<endl;
-    for(int x:arr){cout<<x<<" ";}
-    return 0;
 }
