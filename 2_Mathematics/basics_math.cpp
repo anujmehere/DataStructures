@@ -22,10 +22,10 @@ int count_dig(int n)
     return 1+count_dig(n/10);
 }
 //logarithmic soln
-int cnt_dig(int n)
-{
-    return 0; //return floor(log10(n))+1;
-}
+// int cnt_dig(int n)
+// {
+//     return floor(log10(n))+1;
+// }
 
 //2. Prime numbers
 //every prime nos. can be represented as 6n+1 or 6n-1 except 2 or 3
@@ -151,7 +151,7 @@ void printdivs(int n)
 		}
 	}
 
-	for(; i>=1;i--)
+	for(i; i>=1;i--)
 	{
 		if(n%i==0)
 		{
