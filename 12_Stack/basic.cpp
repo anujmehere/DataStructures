@@ -123,8 +123,9 @@ struct LLStack
 
 int main()
 {
-    LLStack s;
+    Stack s(5);
     //VecStack s;
+    //LLStack s;
     s.push(50);
     s.push(40);
     s.push(30);
